@@ -1,0 +1,74 @@
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 12rem;
+  border-bottom: 1px solid var(--Dark-grayish-blue);
+  &__section {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    margin-right: 5rem;
+  }
+  &__links {
+  }
+  &__link {
+    color: var(--Dark-grayish-blue);
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+  &__profile-pic {
+    max-height: 5.5rem;
+    margin-left: 4rem;
+    cursor: pointer;
+  }
+  &__cart-icon {
+    cursor: pointer;
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &__company-name {
+    text-transform: uppercase;
+    color: var(--Orange);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  &__title {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+  &__desc {
+    color: var(--Dark-grayish-blue);
+    line-height: 3rem;
+    margin-bottom: 2rem;
+  }
+  &__price {
+    vertical-align: middle;
+    font-size: 3rem;
+  }
+  &__sale {
+    border-radius: 2px;
+    padding: 0 1rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    color: var(--Orange);
+    background-color: var(--Pale-orange);
+  }
+  &__og-price {
+    font-weight: 700;
+    color: var(--Dark-grayish-blue);
+    text-decoration: line-through;
+  }
+}

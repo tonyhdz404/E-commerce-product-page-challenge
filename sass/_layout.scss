@@ -1,0 +1,11 @@
+.content {
+  //   background-color: wheat;
+  padding: 15rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.price {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}

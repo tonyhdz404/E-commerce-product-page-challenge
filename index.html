@@ -11,6 +11,8 @@
       href="./images/favicon-32x32.png"
     />
 
+    <link rel="stylesheet" href="/css/main.css" />
+
     <title>Frontend Mentor | E-commerce product page</title>
 
     <style>
@@ -26,30 +28,35 @@
   <body>
     <div class="container">
       <nav class="nav">
-        <img src="./images/logo.svg" alt="Company Logo" class="nav__logo" />
-        <ul class="nav__links">
-          <li class="nav__link">Collections</li>
-          <li class="nav__link">Men</li>
-          <li class="nav__link">Women</li>
-          <li class="nav__link">About</li>
-          <li class="nav__link">Contact</li>
-        </ul>
-        <img
-          src="./images/icon-cart.svg"
-          alt="Cart icon"
-          class="nav__cart-icon"
-        />
-        <img
-          src="./images/image-avatar.png"
-          alt="Profile Picture"
-          class="nav__profile-pic"
-        />
+        <div class="nav__section">
+          <img src="./images/logo.svg" alt="Company Logo" class="nav__logo" />
+          <ul class="nav__links">
+            <li class="nav__link">Collections</li>
+            <li class="nav__link">Men</li>
+            <li class="nav__link">Women</li>
+            <li class="nav__link">About</li>
+            <li class="nav__link">Contact</li>
+          </ul>
+        </div>
+        <div class="nav__section">
+          <img
+            src="./images/icon-cart.svg"
+            alt="Cart icon"
+            class="nav__cart-icon"
+          />
+          <img
+            src="./images/image-avatar.png"
+            alt="Profile Picture"
+            class="nav__profile-pic"
+          />
+        </div>
       </nav>
-      <!-- Main content -->
+
+      <!--* Main content -->
       <main class="content">
         <!-- Product Images Container -->
         <section class="product-images">
-          <div class="product-images__main">
+          <!-- <div class="product-images__main">
             <img
               class="product-images__main__img"
               src="./images/image-product-1.jpg"
@@ -77,7 +84,7 @@
               src="./images/image-product-4-thumbnail.jpg"
               alt=""
             />
-          </div>
+          </div> -->
         </section>
 
         <!-- Product Details Container -->
@@ -89,24 +96,25 @@
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
           </p>
-          <div class="product-pricing">
-            <h2 class="product-pricing__price">$125.00</h2>
-            <h3 class="product-pricing__sale">50%</h3>
-            <p class="product-pricing__og-price">$250.00</p>
+          <div class="price">
+            <h2 class="product-info__price">$125.00</h2>
+            <p class="product-info__sale">50%</p>
+          </div>
+
+          <p class="product-info__og-price">$250.00</p>
+          <div class="product-cart">
+            <button class="product-cart__decrease">
+              <img src="./images/icon-minus.svg" alt="" />
+            </button>
+            <h4 class="product-cart__quantity">0</h4>
+            <button class="product-cart__increase">
+              <img src="./images/icon-plus.svg" alt="" />
+            </button>
+            <button class="product-cart__add-btn">
+              <img src="./images/icon-cart.svg" alt="" /> Add to cart
+            </button>
           </div>
         </section>
-        <div class="product-cart">
-          <button class="product-cart__decrease">
-            <img src="./images/icon-minus.svg" alt="" />
-          </button>
-          <h4 class="product-cart__quantity">0</h4>
-          <button class="product-cart__increase">
-            <img src="./images/icon-plus.svg" alt="" />
-          </button>
-          <button class="product-cart__add-btn">
-            <img src="./images/icon-cart.svg" alt="" /> Add to cart
-          </button>
-        </div>
       </main>
     </div>
 
