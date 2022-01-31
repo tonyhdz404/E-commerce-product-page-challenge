@@ -38,6 +38,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 10rem;
   &__company-name {
     text-transform: uppercase;
     color: var(--Orange);
@@ -71,4 +72,98 @@
     color: var(--Dark-grayish-blue);
     text-decoration: line-through;
   }
+}
+
+// <!-- Cart and Qualtity buttons -->
+.product-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__add-btn {
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--White);
+    flex-basis: 60%;
+    background-color: var(--Orange);
+    padding: 2rem 0;
+    border: none;
+    border-radius: 10px;
+  }
+  &__icon {
+  }
+}
+
+.quantity {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: 35%;
+  background-color: var(--Light-grayish-blue);
+
+  padding: 1rem 0;
+  border-radius: 10px;
+  &__decrease {
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 10px;
+    &:hover {
+      background-color: var(--Dark-grayish-blue);
+    }
+  }
+  &__increase {
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 10px;
+    &:hover {
+      background-color: var(--Dark-grayish-blue);
+    }
+  }
+}
+.btn {
+  border: none;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// <!-- Product Images Container -->
+.product-images {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    &__img {
+      border-radius: 20px;
+    }
+  }
+}
+.product-images__thumbnails {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  width: 500px;
+  &__img {
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+.image {
+  max-width: 70%;
+}
+
+.active {
+  border: solid var(--Orange);
+  border-width: 3px;
+  opacity: 0.6;
 }
