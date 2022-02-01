@@ -81,6 +81,9 @@
   justify-content: space-between;
 
   &__add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: inherit;
     font-family: inherit;
     color: var(--White);
@@ -91,6 +94,7 @@
     border-radius: 10px;
   }
   &__icon {
+    margin-right: 2rem;
   }
 }
 
