@@ -7,6 +7,11 @@ const imgMain = document.querySelector(".product-images__main__img");
 const imgsThumb = document.querySelectorAll(".product-images__thumbnails__img");
 const overlay = document.querySelector(".overlay");
 const modal = document.querySelector(".modal");
+const btnClose = document.querySelector(".modal__close");
+const modalThumbnailContainer = document.querySelector(".modal__thumbnails");
+const allThumbnails = document.querySelectorAll(".modal__thumbnail");
+const btnCart = document.querySelector(".nav__cart-icon");
+const cart = document.querySelector(".cart");
 
 //* Changing the Main img when clicking on a thumbnail
 thumbnailContainer.addEventListener("click", function (e) {
@@ -20,9 +25,10 @@ thumbnailContainer.addEventListener("click", function (e) {
 let currentSlide = 0;
 const slides = document.querySelectorAll(".modal__slide");
 console.log(currentSlide);
+
 //* Opens Modal on Main img click
 imgMain.addEventListener("click", function (e) {
-  console.log("Open modal ");
+  console.log("Open modal");
   overlay.classList.remove("hidden");
   const imgClicked = imgMain.getAttribute("src");
   const [slideNum] = imgClicked.match(/\d(?=\.jpg)/);
@@ -31,84 +37,6 @@ imgMain.addEventListener("click", function (e) {
   slides.forEach((slide, index) => {
     slide.style.transform = `translateX(${index * 100 + currentSlide * -100}%)`;
   });
-
-  //   const modalHTML = `
-  //   <div class="modal__slider">
-  //   <div class="modal__slide slide--1">
-  //     <img
-  //       class="modal__main slide--1"
-  //       src="./images/image-product-1.jpg"
-  //       alt="Main Image"
-  //     />
-  //   </div>
-  //   <div class="modal__slide slide--2">
-  //     <img
-  //       class="modal__main"
-  //       src="./images/image-product-2.jpg"
-  //       alt="Main Image"
-  //     />
-  //   </div>
-  //   <div class="modal__slide slide--3">
-  //     <img
-  //       class="modal__main"
-  //       src="./images/image-product-3.jpg"
-  //       alt="Main Image"
-  //     />
-  //   </div>
-  //   <div class="modal__slide slide--4">
-  //     <img
-  //       class="modal__main"
-  //       src="./images/image-product-4.jpg"
-  //       alt="Main Image"
-  //     />
-  //   </div>
-  // </div>
-  //   <div class="modal__thumbnails">
-  //     <img
-  //       src="./images/image-product-1-thumbnail.jpg"
-  //       alt=""
-  //       class="modal__thumbnail ${
-  //         activeThumbnail(imgClicked, "./images/image-product-1-thumbnail.jpg")
-  //           ? "active"
-  //           : ""
-  //       }"
-  //     />
-  //     <img
-  //       src="./images/image-product-2-thumbnail.jpg"
-  //       alt=""
-  //       class="modal__thumbnail ${
-  //         activeThumbnail(imgClicked, "./images/image-product-2-thumbnail.jpg")
-  //           ? "active"
-  //           : ""
-  //       }"
-  //     />
-  //     <img
-  //       src="./images/image-product-3-thumbnail.jpg"
-  //       alt=""
-  //       class="modal__thumbnail ${
-  //         activeThumbnail(imgClicked, "./images/image-product-3-thumbnail.jpg")
-  //           ? "active"
-  //           : ""
-  //       }"
-  //     />
-  //     <img
-  //       src="./images/image-product-4-thumbnail.jpg"
-  //       alt=""
-  //       class="modal__thumbnail ${
-  //         activeThumbnail(imgClicked, "./images/image-product-4-thumbnail.jpg")
-  //           ? "active"
-  //           : ""
-  //       }"
-  //     />
-  //     <button class="modal__btn-next">
-  //       <img src="./images/icon-next.svg" alt="" />
-  //     </button>
-  //     <button class="modal__btn-prev">
-  //       <img src="./images/icon-previous.svg" alt="" />
-  //     </button>
-  //   </div>`;
-
-  //   modal.insertAdjacentHTML("beforeend", modalHTML);
 });
 //* Close overlay when we click on it
 // overlay.addEventListener("click", function (e) {
@@ -118,7 +46,6 @@ imgMain.addEventListener("click", function (e) {
 
 function activeThumbnail(mainScr, thumbSrc) {
   const src = thumbSrc.replace(/(-thumbnail)/, "");
-
   if (src === mainScr) return true;
   return false;
 }
@@ -128,7 +55,7 @@ function activeThumbnail(mainScr, thumbSrc) {
 modal.addEventListener("click", function (e) {
   const btnNext = e.target.closest(".modal__btn-next");
   if (!btnNext) return;
-  console.log("slide");
+
   currentSlide++;
   if (currentSlide > 3) currentSlide = 0;
   nextSlide(currentSlide);
@@ -145,11 +72,24 @@ modal.addEventListener("click", function (e) {
 });
 //* sett up slides
 
-//* sliding to next
+function goToSlide(slide) {
+  currentSlide = slide;
+  slides.forEach((slide, index) => {
+    slide.style.transform = `translateX(${index * 100 + currentSlide * -100}%)`;
+  });
+}
 
+//* sliding to next
 function nextSlide(currentSlide) {
   slides.forEach((slide, index) => {
     slide.style.transform = `translateX(${index * 100 + currentSlide * -100}%)`;
+  });
+  allThumbnails.forEach((el) => {
+    el.classList.remove("active-thumb");
+    const src = el.getAttribute("src").match(/(?!-)\d(?=-)/)[0] - 1;
+    if (src === currentSlide) {
+      el.classList.add("active-thumb");
+    }
   });
 }
 
@@ -158,4 +98,102 @@ function prevSlide(currentSlide) {
   slides.forEach((slide, index) => {
     slide.style.transform = `translateX(${index * 100 + currentSlide * -100}%)`;
   });
+  allThumbnails.forEach((el) => {
+    el.classList.remove("active-thumb");
+    const src = el.getAttribute("src").match(/(?!-)\d(?=-)/)[0] - 1;
+    if (src === currentSlide) {
+      el.classList.add("active-thumb");
+    }
+  });
 }
+
+//* Closing Modal
+btnClose.addEventListener("click", function (e) {
+  overlay.classList.add("hidden");
+});
+
+//* changing main modal img on thumbnail click
+modalThumbnailContainer.addEventListener("click", function (e) {
+  const thumbnail = e.target.closest(".modal__thumbnail");
+  if (!thumbnail) return;
+
+  const slide = thumbnail.getAttribute("src").match(/(?!-)\d(?=-)/)[0] - 1;
+  goToSlide(slide);
+  allThumbnails.forEach((el) => {
+    el.classList.remove("active-thumb");
+    const src = el.getAttribute("src").match(/(?!-)\d(?=-)/)[0] - 1;
+    if (src === currentSlide) {
+      el.classList.add("active-thumb");
+    }
+  });
+});
+
+//! cart functionality
+btnCart.addEventListener("click", function (e) {
+  console.log("Cart");
+  cart.classList.toggle("cart-hidden");
+});
+
+//* Setting up the Quanity
+let quantity = 0;
+const quantityContainer = document.querySelector(".quantity");
+const labelQuantity = document.querySelector(".quantity__quantity");
+labelQuantity.innerText = quantity;
+
+//* Updating the Quantity
+quantityContainer.addEventListener("click", function (e) {
+  const increase = e.target.closest(".quantity__increase");
+  const decrease = e.target.closest(".quantity__decrease");
+  if (increase) {
+    quantity++;
+  } else if (decrease) {
+    if (quantity <= 0) return;
+    quantity--;
+  } else {
+    return;
+  }
+  labelQuantity.innerText = quantity;
+});
+
+//* Adding and item to Cart
+const productCart = document.querySelector(".product-cart");
+const cartContent = document.querySelector(".cart__content");
+//* Listening to Clicks on the add to cart button
+productCart.addEventListener("click", function (e) {
+  const btnAddToCart = e.target.closest(".product-cart__add-btn");
+  if (!btnAddToCart) return;
+  console.log("ADD");
+  cartContent.innerHTML = "";
+  cartContent.insertAdjacentHTML("afterbegin", cartHTML);
+});
+
+const cartHTML = `
+<div class="cart__content__item">
+    <img
+      src="./images/image-product-1-thumbnail.jpg"
+      alt=""
+      class="cart__content__item-img"
+    />
+    <div class="item-info">
+      <span class="item-title"> Fall Limited Edition Sneakers</span>
+      <span class="item-quanity">$125.00 x 3 </span>
+      <span class="item-cost">$375.00</span>
+    </div>
+    <button class="trash">
+      <img
+        src="./images/icon-delete.svg"
+        alt=""
+        class="item-remove"
+      />
+    </button>
+  </div> 
+  <button class="cart__content__checkout">Checkout</button>
+</div>`;
+
+//* Deleting Items from cart
+cartContent.addEventListener("click", function (e) {
+  const btnDelete = e.target.closest(".trash");
+  if (!btnDelete) return;
+  cartContent.innerHTML = "";
+  cartContent.innerText = "Your cart is empty.";
+});

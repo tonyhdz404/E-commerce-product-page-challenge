@@ -5,6 +5,7 @@
   justify-content: space-between;
   height: 12rem;
   border-bottom: 1px solid var(--Dark-grayish-blue);
+  position: relative;
   &__section {
     height: 100%;
     display: flex;
@@ -92,6 +93,11 @@
     padding: 2rem 0;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s;
+    &:active {
+      transform: scale(0.9);
+    }
   }
   &__icon {
     margin-right: 2rem;

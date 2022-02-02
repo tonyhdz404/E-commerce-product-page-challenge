@@ -50,6 +50,7 @@ body {
           justify-content: space-between;
   height: 12rem;
   border-bottom: 1px solid var(--Dark-grayish-blue);
+  position: relative;
 }
 
 .nav__section {
@@ -171,6 +172,14 @@ body {
   padding: 2rem 0;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.product-cart__add-btn:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .product-cart__icon {
@@ -355,6 +364,27 @@ body {
   width: 55rem;
 }
 
+.modal__close {
+  cursor: pointer;
+  background: transparent;
+  padding: 0rem;
+  border: none;
+  margin-left: auto;
+  margin-bottom: 12px;
+}
+
+.modal__close:hover .modal__close-icon {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.modal__close-icon {
+  width: 2.25rem;
+  height: 2.4rem;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
 .modal__slider {
   position: relative;
   margin: 0 auto;
@@ -383,6 +413,14 @@ body {
 .modal__thumbnail {
   width: 100%;
   border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.modal__thumbnail:hover {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
 }
 
 .modal__thumbnails {
@@ -407,7 +445,7 @@ body {
           justify-content: center;
   position: absolute;
   border: none;
-  top: 227px;
+  top: 270px;
   right: -30px;
   width: 6rem;
   height: 6rem;
@@ -427,7 +465,7 @@ body {
           justify-content: center;
   position: absolute;
   border: none;
-  top: 227px;
+  top: 270px;
   left: -30px;
   width: 6rem;
   height: 6rem;
@@ -439,5 +477,124 @@ body {
   border-width: 3px;
   -webkit-filter: blur(1px) brightness(50%);
           filter: blur(1px) brightness(50%);
+}
+
+.cart {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 11.1rem;
+  height: 28rem;
+  width: 35rem;
+  -webkit-box-shadow: 0 4rem 5rem -2rem rgba(0, 0, 0, 0.377);
+          box-shadow: 0 4rem 5rem -2rem rgba(0, 0, 0, 0.377);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.cart__header {
+  height: 20%;
+  border-bottom: 2px solid #b1b1b1;
+  font-weight: 700;
+  font-size: 1.9rem;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart__content {
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--Dark-grayish-blue);
+  font-weight: 700;
+  padding: 2rem;
+}
+
+.cart__content__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cart__content__item-img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 7px;
+}
+
+.cart__content__checkout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--White);
+  width: 100%;
+  background-color: var(--Orange);
+  padding: 2rem 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cart__content__checkout:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.cart-hidden {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+}
+
+.item-info {
+  padding: 0 1rem;
+  font-weight: 400;
+}
+
+.item-title {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.item-cost {
+  color: black;
+  font-weight: 700;
+}
+
+.trash {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */
