@@ -12,6 +12,7 @@ const modalThumbnailContainer = document.querySelector(".modal__thumbnails");
 const allThumbnails = document.querySelectorAll(".modal__thumbnail");
 const btnCart = document.querySelector(".nav__cart-icon");
 const cart = document.querySelector(".cart");
+const cartQuantity = document.querySelector(".cart-quantity");
 
 //* Changing the Main img when clicking on a thumbnail
 thumbnailContainer.addEventListener("click", function (e) {
@@ -152,6 +153,13 @@ quantityContainer.addEventListener("click", function (e) {
   } else {
     return;
   }
+  if (quantity === 0) {
+    cartQuantity.classList.add("hidden");
+  } else {
+    cartQuantity.classList.remove("hidden");
+    cartQuantity.innerText = quantity;
+  }
+
   labelQuantity.innerText = quantity;
 });
 
@@ -164,10 +172,8 @@ productCart.addEventListener("click", function (e) {
   if (!btnAddToCart) return;
   console.log("ADD");
   cartContent.innerHTML = "";
-  cartContent.insertAdjacentHTML("afterbegin", cartHTML);
-});
-
-const cartHTML = `
+  const totalCost = 125 * quantity;
+  const cartHTML = `
 <div class="cart__content__item">
     <img
       src="./images/image-product-1-thumbnail.jpg"
@@ -176,8 +182,8 @@ const cartHTML = `
     />
     <div class="item-info">
       <span class="item-title"> Fall Limited Edition Sneakers</span>
-      <span class="item-quanity">$125.00 x 3 </span>
-      <span class="item-cost">$375.00</span>
+      <span class="item-quanity">$125.00 x ${quantity} </span>
+      <span class="item-cost">$${totalCost}.00</span>
     </div>
     <button class="trash">
       <img
@@ -189,6 +195,8 @@ const cartHTML = `
   </div> 
   <button class="cart__content__checkout">Checkout</button>
 </div>`;
+  cartContent.insertAdjacentHTML("afterbegin", cartHTML);
+});
 
 //* Deleting Items from cart
 cartContent.addEventListener("click", function (e) {
@@ -196,4 +204,8 @@ cartContent.addEventListener("click", function (e) {
   if (!btnDelete) return;
   cartContent.innerHTML = "";
   cartContent.innerText = "Your cart is empty.";
+  quantity = 0;
+  labelQuantity.innerText = quantity;
+  cartQuantity.innerText = quantity;
+  cartQuantity.classList.add("hidden");
 });
